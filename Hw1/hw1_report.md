@@ -155,4 +155,14 @@ loss = criterion.forward(outputs, onehot_encoding(targets, 10))
 
 ![](result/step4_2_3.jpg)
 
+通过调整超参数的值，进一步提升双隐层MLP的训练准确率。将迭代次数增加至25次，得到最后一次迭代结果如下图所示：
 
+![](result/step4_best_1.jpg)
+
+最后一次迭代中测试集损失为0.091，准确率为97.3%，最终模型的最佳准确率为97.3%，与迭代20次的双隐层MLP相比有所提升。
+
+绘制训练集和测试集上的损失和准确率曲线如下图所示：
+
+![](result/step4_best_2.jpg)
+
+![](result/step4_best_3.jpg)
