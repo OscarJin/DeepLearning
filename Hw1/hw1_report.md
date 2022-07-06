@@ -116,7 +116,7 @@ loss = criterion.forward(outputs, onehot_encoding(targets, 10))
 
 ![](result/step3_1.jpg)
 
-最后一轮迭代中测试集损失为0.141，准确率为95.9%，最终模型的最佳准确率为95.9%，这与Step 2中得到的95.8%是一致的，也从侧面说明Preparations中手动定义的梯度反向传播是正确的。
+最后一轮迭代中测试集损失为0.141，准确率为96.0%，最终模型的最佳准确率为96.0%，这与Step 2中得到的95.9%是一致的，也从侧面说明Preparations中手动定义的梯度反向传播是正确的。
 
 绘制训练集和测试集上的损失和准确率曲线如下图所示：
 
@@ -124,7 +124,7 @@ loss = criterion.forward(outputs, onehot_encoding(targets, 10))
 
 ![](result/step3_3.jpg)
 
-此时Step 2中观察到的突变不再存在，曲线收敛性较好。
+曲线仍具有较好的收敛性，且收敛速度略快于Step 2中的结果。
 
 ## Step 4: Training with torch.nn
 在Step 3的基础上，使用torch.nn构造更通用的MLP模型，并使用torch.nn 模块中内置的损失函数和优化器进行训练，从而全部替换掉手写的模块。
