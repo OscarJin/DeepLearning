@@ -65,7 +65,7 @@
 | --------------- | ----- | 
 | num_epochs | 15 |
 | lr | 0.01 |
-| logging_steps | 64 | 
+| logging_steps | 100 | 
 | best_acc | 0.0 | 
 
 ### 使用CrossEntropyLoss损失函数
@@ -98,7 +98,7 @@ loss = criterion.forward(outputs, onehot_encoding(targets, 10))
 
 ![](result/step2_mse_1.jpg)
 
-最后一轮迭代中测试集损失为0.020，准确率为88.3%，最终模型的最佳准确率为93.4%.
+最后一轮迭代中测试集损失为0.015，准确率为93.5%，最终模型的最佳准确率为93.5%.
 
 绘制训练集和测试集上的损失和准确率曲线如下图所示：
 
