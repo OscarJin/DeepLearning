@@ -70,13 +70,15 @@ CNN2-2的损失和准确率曲线
 由以上模型对比观察到，当CNN和MLP的总参数量相当时，CNN比起MLP有着更高的准确率。但对于CNN来说，并非是总参数量越大就一定有更高的准确率。观察两个CNN的曲线，发现在后一半迭代时训练集和验证集上的差异很大，而且与MLP相比更加严重，说明这组参数的选择并不够合理。
 
 ## Step 3: Improvement
-本节中将在Step 2的基础上对SGD动量（momentum）项与权重衰减（weight
-decay），对数据集进行数据增广（data augmentation），观察三种技巧带来的作用。作为对照的CNN参数为：隐层通道数[16, 16]，卷积核大小[3, 3]，池化层大小[2, 2]，迭代轮数为10轮，这些参数在本节中均保持不变。对照CNN最佳准确率为27.010%，损失和准确率曲线如下图所示。
+本节中将在Step 2的基础上对SGD增加动量（momentum）项与权重衰减（weight
+decay），对数据集进行数据增广（data augmentation），观察三种技巧带来的作用。
+
+### Momentum
+作为对照的CNN参数为：隐层通道数[16, 16]，卷积核大小[3, 3]，池化层大小[2, 2]，迭代轮数为10轮。对照CNN最佳准确率为27.010%，损失和准确率曲线如下图所示。
 
 ![](result/step3_0_loss.jpg)
 ![](result/step3_0_acc.jpg)
 
-### Momentum
 对SGD增加动量项，设置动量参数mmt为0.9，最终模型最佳准确率为31.210%，损失和准确率曲线如下图所示。
 
 ![](result/step3_1_loss.jpg)
@@ -89,7 +91,14 @@ decay），对数据集进行数据增广（data augmentation），观察三种�
 ![](result/sgd-momentum.jpg)
 
 ### Weight Decay
+权重衰减的作用是减轻模型的过拟合。当模型逐渐过拟合时权值逐渐变大，因此为了避免出现过拟合，会给误差函数添加一个惩罚项。选择过拟合较为明显的Step 2中的CNN2-2作为对照。
 
+对SGD增加权重衰减项，设置权重衰减参数wd为0.001，最终模型最佳准确率为23.190%，损失和准确率曲线如下图所示。
+
+![](result/step3_2_loss.jpg)
+![](result/step3_2_acc.jpg)
+
+对比CNN2-2的曲线，发现增加权重衰减项后测试集和验证集之间的差距有所缩小，这也验证了权重衰减具有抑制过拟合的作用。
 
 ## References
 [1] Qian, Ning. "On the momentum term in gradient descent learning algorithms." Neural networks 12.1 (1999): 145-151.
