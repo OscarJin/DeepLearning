@@ -69,7 +69,7 @@ CNN2-2的损失和准确率曲线
 
 由以上模型对比观察到，当CNN和MLP的总参数量相当时，CNN比起MLP有着更高的准确率。但对于CNN来说，并非是总参数量越大就一定有更高的准确率。观察两个CNN的曲线，发现在后一半迭代时训练集和验证集上的差异很大，而且与MLP相比更加严重，说明这组参数的选择并不够合理。
 
-## Step 3: Improvement
+## Step 3: Techniques
 本节中将在Step 2的基础上对SGD增加动量（momentum）项与权重衰减（weight
 decay），对数据集进行数据增广（data augmentation），观察三种技巧带来的作用。
 
@@ -107,6 +107,9 @@ decay），对数据集进行数据增广（data augmentation），观察三种�
 ![](result/step3_3_acc.jpg)
 
 观察到随着迭代轮数的增加，未开启数据增广时测试集和验证集之间的差距会越来越大，而开启数据增广后测试集和验证集之间的差距始终较为稳定且较小，说明数据增广会显著增强模型的泛化能力。
+
+## Step 4: Improvement
+同时使用Step 3中的3种技巧，并调整CNN的层数和通道数。
 
 ## References
 [1] Qian, Ning. "On the momentum term in gradient descent learning algorithms." Neural networks 12.1 (1999): 145-151.
