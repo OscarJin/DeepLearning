@@ -115,3 +115,5 @@ decay），对数据集进行数据增广（data augmentation），观察三种�
 [1] Qian, Ning. "On the momentum term in gradient descent learning algorithms." Neural networks 12.1 (1999): 145-151.
 
 [2] Vitaly Bushaev. “Stochastic Gradient Descent with Momentum.” Medium, Towards Data Science, 4 Dec. 2017, towardsdatascience.com/stochastic-gradient-descent-with-momentum-a84097641a5d. Accessed 9 July 2022.
+
+[3] Y. Lecun, L. Bottou, Y. Bengio and P. Haffner, "Gradient-based learning applied to document recognition," in Proceedings of the IEEE, vol. 86, no. 11, pp. 2278-2324, Nov. 1998, doi: 10.1109/5.726791.
