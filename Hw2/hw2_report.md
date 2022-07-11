@@ -109,12 +109,15 @@ decay），对数据集进行数据增广（data augmentation），观察三种�
 观察到随着迭代轮数的增加，未开启数据增广时测试集和验证集之间的差距会越来越大，而开启数据增广后测试集和验证集之间的差距始终较为稳定且较小，说明数据增广会显著增强模型的泛化能力。
 
 ## Step 4: Improvement
-本节中通过调整优化参数和网络结构，以提高模型训练的准确率。网络的结构设计借鉴了VGG网络，卷积网络结构如下：
+本节中通过调整优化参数和网络结构，以提高模型训练的准确率。
+
+## Step 5: Batch Normalization
+在卷积层和激活函数之间增加Batch Normalization层，网络的结构设计借鉴了VGG网络，卷积网络结构如下：
 
 0. Input: 32x32x3
-1. Conv: 32x32x64
+1. Conv: 32x32x64 (padding=1)
 2. Conv: 32x32x64
-3. MaxPool: 16x16x64
+3. MaxPool: 16x16x64 (stride=2)
 4. Conv: 16x16x128
 5. Conv: 16x16x128
 6. MaxPool: 8x8x128
