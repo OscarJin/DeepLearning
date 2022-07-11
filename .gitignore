@@ -1,6 +1,10 @@
 # dataset
 data
 
+# result
+Hw2/exp
+Hw2/exp_step1
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
