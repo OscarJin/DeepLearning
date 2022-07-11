@@ -109,7 +109,40 @@ decay），对数据集进行数据增广（data augmentation），观察三种�
 观察到随着迭代轮数的增加，未开启数据增广时测试集和验证集之间的差距会越来越大，而开启数据增广后测试集和验证集之间的差距始终较为稳定且较小，说明数据增广会显著增强模型的泛化能力。
 
 ## Step 4: Improvement
-本节中通过调整优化参数和网络结构，以提高模型训练的准确率。
+本节中通过调整优化参数和网络结构，以提高模型训练的准确率。网络的结构设计借鉴了VGG网络，卷积网络结构如下：
+
+0. Input: 32x32x3
+1. Conv: 32x32x64
+2. Conv: 32x32x64
+3. MaxPool: 16x16x64
+4. Conv: 16x16x128
+5. Conv: 16x16x128
+6. MaxPool: 8x8x128
+7. Conv: 8x8x256
+8. Conv: 8x8x256
+9. MaxPool: 4x4x256
+10. Conv: 4x4x512
+11. Conv: 4x4x512
+12. MaxPool: 2x2x512
+13. Conv: 2x2x512
+14. Conv: 2x2x512
+15. MaxPool: 1x1x512
+
+卷积网络后再附加一个含两个宽度为4096的隐层的MLP，模型总参数量为28697252。超参数设置如下表：
+
+| Parameter | Value | Meaning |
+| --------- | ------| -------|
+| lr | 0.1 | learning rate|
+| batchsize | 256 | training batchsize |
+| mmt | 0.9 | momentum for optimizer |
+| wd | 5e-4 | weight decay for optimizer |
+| data_augmentation | True | data augmentation |
+| use_BN | True | use batch normalization |
+
+经过200轮迭代后，模型最佳准确率为74.510%，损失和准确率曲线如下图所示。
+
+![](result/step5_loss.jpg)
+![](result/step5_acc.jpg)
 
 ## References
 [1] Qian, Ning. "On the momentum term in gradient descent learning algorithms." Neural networks 12.1 (1999): 145-151.
@@ -117,3 +150,5 @@ decay），对数据集进行数据增广（data augmentation），观察三种�
 [2] Vitaly Bushaev. “Stochastic Gradient Descent with Momentum.” Medium, Towards Data Science, 4 Dec. 2017, towardsdatascience.com/stochastic-gradient-descent-with-momentum-a84097641a5d. Accessed 9 July 2022.
 
 [3] Y. Lecun, L. Bottou, Y. Bengio and P. Haffner, "Gradient-based learning applied to document recognition," in Proceedings of the IEEE, vol. 86, no. 11, pp. 2278-2324, Nov. 1998, doi: 10.1109/5.726791.
+
+[4] Simonyan, Karen, and Andrew Zisserman. "Very deep convolutional networks for large-scale image recognition." arXiv preprint arXiv:1409.1556 (2014).
